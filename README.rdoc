@@ -1,0 +1,82 @@
+= abstractstack
+
+* http://github.com/kachick/abstractstack
+* http://rubygems.org/gems/abstractstack
+* http://rubyforge.org/projects/abstractstack
+
+== Description
+
+A template of "Stack" classies
+
+== Features
+
+* Base APIs are limited from Ruby's Array
+  Methods Below
+
+  * push, <<
+  * pop
+  * bottom
+  * top, peek 
+  * length, size
+  * empty?
+  * each
+  * reverse_each, lifo_each, filo_each
+
+* You can extend when generate own Stack classies
+
+== Usage
+
+* setup
+    require 'abstractstack'
+
+* Simply
+
+    Stack = AbstractStack.new
+    stack = Stack.new
+    stack.push 1
+    stack << 7
+    stack.top #=> 7
+    stack.bottom #=> 1
+    stack.peek #=> 7
+    stack.pop #=> 7
+    stack.pop #=> 1
+    stack.pop #=> Exception(Stack::UnderFlow)
+
+* Size limitation
+  
+    stack = Stack.new 2
+    stack.limit         #=> 2
+    stack << 1 << 7
+    stack << 9          #=> Exception(Stack::Overflow)
+
+* You can get your extended Stack class
+
+    MyStack = AbstractStack.new do
+      include Enumerable
+    end
+
+    stack = MyStack.new
+    stack << 1 << 7
+    stack.map{|v|v * 2} #=> [2, 14]
+
+
+== Requirements
+
+* Ruby 1.9.2 or later
+  
+  Focusing
+  
+  * 1.9.3-p194
+  * 1.9.2-p290
+
+== Installation
+
+* gem install abstractstack
+
+== License
+
+The MIT X11 License
+
+Copyright (c) 2012 Kenichi Kamiya
+
+See the file LICENSE for further details.
