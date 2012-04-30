@@ -3,6 +3,7 @@
 require 'forwardable'
 
 class AbstractStack
+
   VERSION = '0.0.1'.freeze
 
   class InvalidStackOperation < StandardError; end
@@ -124,7 +125,5 @@ class AbstractStack
     end
 
   end
-  
-
 
 end
