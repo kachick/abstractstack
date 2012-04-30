@@ -11,7 +11,8 @@ A template of "Stack" classies
 == Features
 
 * Base APIs are limited from Ruby's Array
-  Methods Below
+
+  It has below methods
 
   * push, <<
   * pop
@@ -35,19 +36,19 @@ A template of "Stack" classies
     stack = Stack.new
     stack.push 1
     stack << 7
-    stack.top #=> 7
+    stack.top    #=> 7
     stack.bottom #=> 1
-    stack.peek #=> 7
-    stack.pop #=> 7
-    stack.pop #=> 1
-    stack.pop #=> Exception(Stack::UnderFlow)
+    stack.peek   #=> 7
+    stack.pop    #=> 7
+    stack.pop    #=> 1
+    stack.pop    #=> Exception(Stack::UnderFlow)
 
 * Size limitation
   
     stack = Stack.new 2
-    stack.limit         #=> 2
+    stack.limit          #=> 2
     stack << 1 << 7
-    stack << 9          #=> Exception(Stack::Overflow)
+    stack << 9           #=> Exception(Stack::Overflow)
 
 * You can get your extended Stack class
 
@@ -57,7 +58,7 @@ A template of "Stack" classies
 
     stack = MyStack.new
     stack << 1 << 7
-    stack.map{|v|v * 2} #=> [2, 14]
+    stack.map{|v|v * 2}  #=> [2, 14]
 
 
 == Requirements
