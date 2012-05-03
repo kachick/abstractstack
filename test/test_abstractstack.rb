@@ -124,6 +124,8 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal 2, stack.limit
     stack << 4 << 7
     
+    assert_equal '#<TestAbstractStack::FIFO limit=2 [4, 7]>', stack.inspect
+    
     assert_raises FIFO::OverFlow do
       stack << 9
     end
