@@ -12,7 +12,7 @@ A template of "Stack" classies
 
 * Base APIs are limited from Ruby's Array
 
-  It has below methods
+  It has below methods for basic operation
 
   * push, <<
   * pop
@@ -20,10 +20,14 @@ A template of "Stack" classies
   * top, peek 
   * length, size
   * empty?
+  * fifo_each, lilo_each
+  * lifo_each, filo_each
+  
+  And you can get the below methods so easily
+  
+  * [], at
   * each
-  * reverse_each, lifo_each, filo_each
-
-* You can extend when generate own Stack classies
+  * reverse_each
 
 == Usage
 
@@ -32,7 +36,7 @@ A template of "Stack" classies
 
 * Simply
 
-    Stack = AbstractStack.new
+    class Stack < AbstractStack; end
     stack = Stack.new
     stack.push 1
     stack << 7
@@ -41,24 +45,35 @@ A template of "Stack" classies
     stack.peek   #=> 7
     stack.pop    #=> 7
     stack.pop    #=> 1
-    stack.pop    #=> Exception(Stack::UnderFlow)
+    stack.pop    #=> Exception(UnderFlow)
 
 * Size limitation
   
     stack = Stack.new 2
     stack.limit          #=> 2
     stack << 1 << 7
-    stack << 9           #=> Exception(Stack::Overflow)
+    stack << 9           #=> Exception(Overflow)
 
 * You can get your extended Stack class
 
-    MyStack = AbstractStack.new do
+    class LIFO < AbstractStack
       include Enumerable
+
+      alias_method :each, :lifo_each
+      alias_method :reverse_each, :fifo_each
+      alias_method :first, :top
+      alias_method :last, :bottom
+
+      def at(pos)
+        super pos, :top
+      end
     end
 
-    stack = MyStack.new
+    stack = LIFO.new
     stack << 1 << 7
-    stack.map{|v|v * 2}  #=> [2, 14]
+    stack.map{|v|v * 2}  #=> [14, 2]
+    stack[0]             #=> 7
+    stack[-1]            #=> 1
 
 
 == Requirements
