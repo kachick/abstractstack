@@ -4,7 +4,7 @@ require 'forwardable'
 
 # @abstract - Define start point of index and/or loop operations
 # @example
-#   class LIFOStack < AbstractStack
+#   class LIFO < AbstractStack
 #     include Enumerable
 #
 #     alias_method :each, :lifo_each
