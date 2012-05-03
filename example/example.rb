@@ -4,7 +4,7 @@ require_relative '../lib/abstractstack'
 
 # * Simply
 
-    Stack = AbstractStack.new
+    class Stack < AbstractStack; end
     stack = Stack.new
     stack.push 1
     stack << 7
@@ -26,10 +26,20 @@ require_relative '../lib/abstractstack'
 
 # * You can get your extended Stack class
 
-    MyStack = AbstractStack.new do
+    class LIFO < AbstractStack
       include Enumerable
+
+      alias_method :each, :lifo_each
+      alias_method :reverse_each, :fifo_each
+      alias_method :first, :top
+      alias_method :last, :bottom
+
+      def at(pos)
+        super pos, :top
+      end
     end
 
-    stack = MyStack.new
+    stack = LIFO.new
+
     stack << 1 << 7
-    p stack.map{|v|v * 2} #=> [2, 14]
+    p stack.map{|v|v * 2} #=> [14, 2]
