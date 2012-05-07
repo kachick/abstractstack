@@ -46,25 +46,20 @@ class AbstractStack
   def_delegator  :@list, :last, :peek
 
   # @param [Object] value
-  # @return [Object] value
+  # @return [value]
   def push(value)
-    if limit && (limit <= length)
-      raise OverFlow
-    else
-      @list.push value
-      self
-    end
+    raise OverFlow if limit && (limit <= length)
+    
+    @list.push value
+    self
   end
 
   alias_method :<<, :push
 
-  # @return [Object]
   def pop
-    if empty?
-      raise UnderFlow
-    else
-      @list.pop
-    end
+    raise UnderFlow if empty?
+      
+    @list.pop
   end
 
   # @return [self]
@@ -88,22 +83,12 @@ class AbstractStack
   alias_method :lifo_each, :filo_each
   
   # @param [#to_int] pos
-  # @param [Symbol] start
+  # @param [Symbol] start - select one from :bottom or :top(:peek)
   # @abstract - Define start point of index
   def at(pos, start)
     raise InvalidStackOperation if empty?
-    
     pos = pos.to_int
-    
-    if pos < 0
-      if pos.abs > length
-        raise IndexError
-      end
-    else
-      if (pos + 1) > length
-        raise IndexError
-      end
-    end
+    validate_index pos
     
     case start
     when :bottom
@@ -138,7 +123,7 @@ class AbstractStack
   
   # @return [Boolean]
   def ==(other)
-    (self.class == other.class) && @list == other._list
+    (self.class == other.class) && (@list == other._list)
   end
   
   def eql?(other)
@@ -161,6 +146,18 @@ class AbstractStack
 
   def initialize_copy(original)
     @list = @list.dup
+  end
+  
+  def validate_index(pos)
+    if pos < 0
+      if pos.abs > length
+        raise IndexError
+      end
+    else
+      if (pos + 1) > length
+        raise IndexError
+      end
+    end
   end
 
 end
