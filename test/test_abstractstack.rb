@@ -14,7 +14,7 @@ class TestAbstractStack < Test::Unit::TestCase
     end
   end
   
-  class LIFO< AbstractStack
+  class LIFO < AbstractStack
     include Enumerable
     
     alias_method :each, :lifo_each
