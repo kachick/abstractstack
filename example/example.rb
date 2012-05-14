@@ -8,13 +8,13 @@ require_relative '../lib/abstractstack'
     stack = Stack.new
     stack.push 1
     stack << 7
-    p stack
+    p stack         #=> #<Stack limit=nil [1, 7]>
     p stack.top     #=> 7
     p stack.bottom  #=> 1
     stack.pop       #=> 7
     stack.pop       #=> 1
-    p stack
-    p stack.to_a
+    p stack         #=> #<Stack limit=nil []>
+    p stack.to_a    #=> []
     #stack.pop      #=> Exception(UnderFlow)
 
 # * Size limitation
