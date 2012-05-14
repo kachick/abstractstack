@@ -17,13 +17,14 @@ require 'forwardable'
 #     end
 #   end
 class AbstractStack
+
   extend Forwardable
 
   VERSION = '0.0.2'.freeze
 
   class InvalidStackOperation < StandardError; end
   class UnderFlow < InvalidStackOperation; end
-  class OverFlow < InvalidStackOperation; end
+  class OverFlow  < InvalidStackOperation; end
   
   attr_reader :limit
  
