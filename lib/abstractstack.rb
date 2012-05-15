@@ -4,8 +4,10 @@ require 'forwardable'
 require_relative 'abstractstack/version'
 require_relative 'abstractstack/exceptions'
 
-# @abstract - Define start point of index and/or loop operations
+# @abstract
 # @example
+#   class SimpleStack < AbstractStack; end
+#   
 #   class LIFO < AbstractStack
 #     include Enumerable
 #
@@ -13,10 +15,6 @@ require_relative 'abstractstack/exceptions'
 #     alias_method :reverse_each, :fifo_each
 #     alias_method :first, :top
 #     alias_method :last, :bottom
-#
-#     def at(pos)
-#       super pos, :top
-#     end
 #   end
 class AbstractStack
 

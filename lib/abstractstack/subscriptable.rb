@@ -1,5 +1,15 @@
 # Copyright (C) 2012 Kenichi Kamiya
 
+# @example
+#   require 'abstractstack/subscriptable'
+#   
+#   class LIFO < AbstractStack
+#     include Subscriptable
+#
+#     def at(pos)
+#       super pos, :top
+#     end
+#   end
 module AbstractStack::Subscriptable
   
   # @param [#to_int] pos
