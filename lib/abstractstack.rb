@@ -140,7 +140,7 @@ class AbstractStack
     @list = @list.dup
   end
   
-  def _validate_index(pos)
+  def _validate_subscript(pos)
     if pos < 0
       if pos.abs > length
         raise IndexError
@@ -156,7 +156,7 @@ class AbstractStack
   # 0 <-> -1, 1 <-> -2, 5 <-> -6
   def _index_for(pos, start)
     pos = pos.to_int
-    _validate_index pos
+    _validate_subscript pos
     
     case start
     when :bottom
