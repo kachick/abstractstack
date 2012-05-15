@@ -120,7 +120,7 @@ class AbstractStack
   
   def eql?(other)
     (self.class == other.class) && 
-      [limit, @list].eql?([other.limit, other._list])
+      [limit, _list].eql?([other.limit, other._list])
   end
 
   # @return [Integer]
