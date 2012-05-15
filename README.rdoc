@@ -1,8 +1,7 @@
 = abstractstack
 
-* http://github.com/kachick/abstractstack
-* http://rubygems.org/gems/abstractstack
-* http://rubyforge.org/projects/abstractstack
+code :: http://github.com/kachick/abstractstack
+gem  :: http://rubygems.org/gems/abstractstack
 
 == Description
 
