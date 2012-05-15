@@ -88,17 +88,8 @@ class AbstractStack
   # @abstract - Define start point of index
   def at(pos, start)
     raise InvalidStackOperation if empty?
-    pos = pos.to_int
-    validate_index pos
-    
-    case start
-    when :bottom
-      @list[pos]
-    when :top, :peek
-      @list.reverse[pos]
-    else
-      raise ArgumentError
-    end
+
+    @list[_index_for pos, start]
   end
   
   # @param [#to_int] pos
@@ -149,7 +140,7 @@ class AbstractStack
     @list = @list.dup
   end
   
-  def validate_index(pos)
+  def _validate_index(pos)
     if pos < 0
       if pos.abs > length
         raise IndexError
@@ -158,6 +149,22 @@ class AbstractStack
       if (pos + 1) > length
         raise IndexError
       end
+    end
+  end
+  
+  # when "start" is :top(:peek)
+  # 0 <-> -1, 1 <-> -2, 5 <-> -6
+  def _index_for(pos, start)
+    pos = pos.to_int
+    _validate_index pos
+    
+    case start
+    when :bottom
+      pos
+    when :top, :peek
+      (- pos) - 1
+    else
+      raise ArgumentError
     end
   end
 
