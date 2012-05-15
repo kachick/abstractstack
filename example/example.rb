@@ -24,10 +24,13 @@ require_relative '../lib/abstractstack'
     stack << 1 << 7
     #stack << 9           #=> Exception(Overflow)
 
+require_relative '../lib/abstractstack/subscriptable'
+
 # * You can get your extended Stack class
 
     class LIFO < AbstractStack
       include Enumerable
+      include Subscriptable
 
       alias_method :each, :lifo_each
       alias_method :reverse_each, :fifo_each

@@ -31,7 +31,7 @@ A template of "Stack" classies
 
 == Usage
 
-* setup
+* Setup
     require 'abstractstack'
 
 * Simply
@@ -56,8 +56,11 @@ A template of "Stack" classies
 
 * You can get your extended Stack class
 
+    require 'abstractstack/subscriptable'
+
     class LIFO < AbstractStack
       include Enumerable
+      include Subscriptable
 
       alias_method :each, :lifo_each
       alias_method :reverse_each, :fifo_each

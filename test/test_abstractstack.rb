@@ -5,6 +5,7 @@ class TestAbstractStack < Test::Unit::TestCase
   
   class FIFO < AbstractStack
     include Enumerable
+    include Subscriptable
     
     alias_method :each, :fifo_each
     alias_method :reverse_each, :filo_each
@@ -16,6 +17,7 @@ class TestAbstractStack < Test::Unit::TestCase
   
   class LIFO < AbstractStack
     include Enumerable
+    include Subscriptable
     
     alias_method :each, :lifo_each
     alias_method :reverse_each, :fifo_each
