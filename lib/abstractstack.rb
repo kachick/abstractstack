@@ -24,15 +24,7 @@ class AbstractStack
  
   def initialize(limit=nil)
     @list = []
-
-    case limit
-    when nil, 0, false
-      @limit = nil
-    when ->v{v.integer? && (v >= 1)}
-      @limit = limit.to_int
-    else
-      raise TypeError
-    end
+    @limit = limit_for limit
   end
 
   def_delegators :@list, :length, :size, :empty?
@@ -118,6 +110,17 @@ class AbstractStack
 
   def initialize_copy(original)
     @list = @list.dup
+  end
+  
+  def limit_for(limit)
+    case limit
+    when nil, 0, false
+      nil
+    when ->v{v.integer? && (v >= 1)}
+      limit.to_int
+    else
+      raise TypeError
+    end
   end
 
 end
