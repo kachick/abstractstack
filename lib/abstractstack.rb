@@ -7,7 +7,7 @@ require_relative 'abstractstack/exceptions'
 # @abstract
 # @example
 #   class SimpleStack < AbstractStack; end
-#   
+# @example
 #   class LIFO < AbstractStack
 #     include Enumerable
 #
