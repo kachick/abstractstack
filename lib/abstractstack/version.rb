@@ -1,5 +1,5 @@
 class AbstractStack
 
-  VERSION = '0.0.3.a'.freeze
+  VERSION = '0.0.3'.freeze
 
 end
