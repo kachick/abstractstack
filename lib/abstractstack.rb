@@ -4,7 +4,6 @@ require 'forwardable'
 require_relative 'abstractstack/version'
 require_relative 'abstractstack/exceptions'
 
-# @abstract
 # @example
 #   class SimpleStack < AbstractStack; end
 # @example
@@ -24,7 +23,7 @@ class AbstractStack
  
   def initialize(limit=nil)
     @list = []
-    @limit = limit_for limit
+    @limit = _limit_for limit
   end
 
   def_delegators :@list, :length, :size, :empty?
@@ -112,7 +111,7 @@ class AbstractStack
     @list = @list.dup
   end
   
-  def limit_for(limit)
+  def _limit_for(limit)
     case limit
     when nil, 0, false
       nil

@@ -1,5 +1,6 @@
 # Copyright (C) 2012 Kenichi Kamiya
 
+# @abstract
 # @example
 #   require 'abstractstack/subscriptable'
 #   
