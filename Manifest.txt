@@ -3,6 +3,8 @@ LICENSE
 History.rdoc
 Manifest.txt
 Rakefile
+Gemfile
+abstractstack.gemspec
 lib/abstractstack.rb
 lib/abstractstack/version.rb
 lib/abstractstack/exceptions.rb
