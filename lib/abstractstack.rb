@@ -21,6 +21,7 @@ class AbstractStack
   
   attr_reader :limit
  
+  # @param [Integer] limit
   def initialize(limit=nil)
     @list = []
     @limit = _limit_for limit
@@ -33,6 +34,7 @@ class AbstractStack
 
   # @param [Object] value
   # @return [value]
+  # @raise [OverFlow] if over the limit size of self
   def push(value)
     raise OverFlow if limit && (limit <= length)
     
@@ -42,13 +44,16 @@ class AbstractStack
 
   alias_method :<<, :push
 
+  # @raise [UnderFlow] if self is empty when you call
   def pop
     raise UnderFlow if empty?
       
     @list.pop
   end
 
-  # @return [self]
+  # @yield [value]
+  # @yieldreturn [self]
+  # @return [Enumerator]
   def fifo_each
     return to_enum(__callee__) unless block_given?
 
@@ -58,7 +63,9 @@ class AbstractStack
   
   alias_method :lilo_each, :fifo_each
 
-  # @return [self]
+  # @yield [value]
+  # @yieldreturn [self]
+  # @return [Enumerator]
   def filo_each
     return to_enum(__callee__) unless block_given?
 
