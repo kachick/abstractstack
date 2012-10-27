@@ -1,8 +1,9 @@
-# Copyright (C) 2012 Kenichi Kamiya
+# Copyright (c) 2012 Kenichi Kamiya
 
 require 'forwardable'
 require_relative 'abstractstack/version'
 require_relative 'abstractstack/exceptions'
+require_relative 'abstractstack/subscriptable'
 
 # @example
 #   class SimpleStack < AbstractStack; end

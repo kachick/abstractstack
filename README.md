@@ -66,8 +66,6 @@ stack << 9           #=> Exception(Overflow)
 ### Enhanced Stack class
 
 ```ruby
-require 'abstractstack/subscriptable'
-
 class LIFO < AbstractStack
   include Enumerable
   include Subscriptable
