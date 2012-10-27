@@ -2,11 +2,10 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
+group :test do
   gem 'rake'
-  gem 'yard', '>=0.8.2.1'
 end
 
-group :test do
+group :development do
   gem 'rake'
 end
