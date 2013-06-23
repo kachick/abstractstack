@@ -1,3 +1,5 @@
+# coding: us-ascii
+
 # I don't know why dose occur errors below.
 #  require_relative 'lib/abstractstack/version'
 require File.expand_path('../lib/abstractstack/version', __FILE__)

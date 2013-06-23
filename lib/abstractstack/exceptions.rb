@@ -1,3 +1,5 @@
+# coding: us-ascii
+
 class AbstractStack
 
   class InvalidStackOperation < StandardError; end

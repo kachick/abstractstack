@@ -1,3 +1,5 @@
+# coding: us-ascii
+
 require_relative 'helper'
 
 class TestAbstractStack < Test::Unit::TestCase
