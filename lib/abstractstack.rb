@@ -22,4 +22,3 @@ end
 
 require_relative 'abstractstack/fifo'
 require_relative 'abstractstack/lifo'
-
