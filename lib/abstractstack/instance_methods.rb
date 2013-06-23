@@ -6,7 +6,7 @@ class AbstractStack
   
   attr_reader :limit
  
-  # @param [Integer] limit
+  # @param limit [Integer]
   def initialize(limit=nil)
     @list = []
     @limit = _limit_for limit
@@ -17,7 +17,6 @@ class AbstractStack
   def_delegator  :@list, :last, :top
   def_delegator  :@list, :last, :peek
 
-  # @param [Object] value
   # @return [value]
   # @raise [OverFlow] if over the limit size of self
   def push(value)

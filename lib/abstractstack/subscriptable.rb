@@ -12,16 +12,16 @@ class AbstractStack
   #   end
   module Subscriptable
   
-    # @param [Integer, #to_int] pos
-    # @param [Symbol, #to_sym] start - select one from :bottom or :top(:peek)
-    # @abstract - Define start point of index
+    # @param pos [Integer, #to_int]
+    # @param start [Symbol, #to_sym] select one from :bottom or :top(:peek)
+    # @abstract Define start point of index
     def at(pos, start)
       raise InvalidStackOperation if empty?
 
       @list.fetch _index_for(pos.to_int, start.to_sym)
     end
     
-    # @param [Integer, #to_int] pos
+    # @param pos [Integer, #to_int]
     def [](pos)
       at pos
     end
