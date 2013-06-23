@@ -136,6 +136,20 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal 2, stack.length
   end
 
+  def test_freeze
+    stack = FIFO.new 2
+    stack << 1
+    stack.freeze
+    
+    assert_raises RuntimeError do
+      stack.pop
+    end
+
+    assert_raises RuntimeError do
+      stack << 1
+    end
+  end
+
   def test_lifo
     stack = LIFO.new
 
