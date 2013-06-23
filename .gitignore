@@ -2,6 +2,8 @@
 *.rbc
 .bundle
 .config
+.DS_Store
+.ruby-version
 coverage
 coverage.data
 InstalledFiles
@@ -32,5 +34,5 @@ doc/
 *.lock
 *.bak
 tool/
-*\#*
 .rbx/
+*\#*
