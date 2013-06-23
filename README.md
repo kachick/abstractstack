@@ -4,7 +4,7 @@ abstractstack
 Description
 -----------
 
-A template of Stack classies.
+A template of stack APIs
 
 Features
 --------

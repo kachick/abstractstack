@@ -1,4 +1,5 @@
 # coding: us-ascii
+# abstractstack - A template of stack APIs
 # Copyright (c) 2012 Kenichi Kamiya
 
 require 'forwardable'

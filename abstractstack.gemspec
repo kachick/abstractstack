@@ -7,7 +7,7 @@ require File.expand_path('../lib/abstractstack/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ['Kenichi Kamiya']
   gem.email         = ['kachick1+ruby@gmail.com']
-  gem.summary       = %q{A template of Stack classies}
+  gem.summary       = %q{A template of stack APIs}
   gem.description   = gem.summary.dup
   gem.homepage      = 'http://kachick.github.com/abstractstack/'
 
