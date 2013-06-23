@@ -18,7 +18,7 @@ class AbstractStack
     def at(pos, start)
       raise InvalidStackOperation if empty?
 
-      @list[_index_for pos, start.to_sym]
+      @list.fetch _index_for(pos.to_int, start.to_sym)
     end
     
     # @param [Integer, #to_int] pos
@@ -27,25 +27,8 @@ class AbstractStack
     end
 
     private
-    
-    def _validate_subscript(pos)
-      if pos < 0
-        if pos.abs > length
-          raise IndexError
-        end
-      else
-        if (pos + 1) > length
-          raise IndexError
-        end
-      end
-    end
-    
-    # when "start" is :top(:peek)
-    # 0 <-> -1, 1 <-> -2, 5 <-> -6
-    def _index_for(pos, start)
-      pos = pos.to_int
-      _validate_subscript pos
-      
+
+    def _index_for(pos, start)      
       case start
       when :bottom
         pos
