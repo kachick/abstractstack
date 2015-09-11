@@ -1,34 +1,34 @@
 abstractstack
 ===============
 
+[![Build Status](https://secure.travis-ci.org/kachick/abstractstack.png)](http://travis-ci.org/kachick/abstractstack)
+[![Gem Version](https://badge.fury.io/rb/abstractstack.png)](http://badge.fury.io/rb/abstractstack)
+[![Dependency Status](https://gemnasium.com/kachick/abstractstack.svg)](https://gemnasium.com/kachick/abstractstack)
+
 Description
 -----------
 
-A template of stack APIs
+Easy to get stack APIs
 
 Features
 --------
 
-### For basic operations.
+### In AbstractStack
 
 * push, <<
 * pop
 * bottom
-* top, peek 
+* top, peek
 * length, size
 * empty?
 * fifo_each, lilo_each
 * lifo_each, filo_each
 
-### Easy to get.
+### Only at FIFO(LILO), LIFO(FILO)
 
 * [], at
 * each
 * reverse_each
-
-### Others
-
-* Pure Ruby :)
 
 Usage
 -----
@@ -66,53 +66,31 @@ stack << 9           #=> Exception(Overflow)
 ### Enhanced Stack class
 
 ```ruby
-class LIFO < AbstractStack
-  include Enumerable
-  include Subscriptable
-
-  alias_method :each, :lifo_each
-  alias_method :reverse_each, :fifo_each
-  alias_method :first, :top
-  alias_method :last, :bottom
-
-  def at(pos)
-    super pos, :top
-  end
-end
-
-stack = LIFO.new
+stack = AbstractStack::LIFO.new
 stack << 1 << 7
-stack.map{|v|v * 2}  #=> [14, 2]
-stack[0]             #=> 7
-stack[-1]            #=> 1
+stack.map { |v| v * 2 }  #=> [14, 2]
+stack[0]                 #=> 7
+stack[-1]                #=> 1
 ```
 
 Requirements
 -------------
 
-* Ruby - [1.9.2 or later](http://travis-ci.org/#!/kachick/abstractstack)
-
-Build Status
--------------
-
-[![Build Status](https://secure.travis-ci.org/kachick/abstractstack.png)](http://travis-ci.org/kachick/abstractstack)
+* Ruby - [2.0 or later](http://travis-ci.org/#!/kachick/abstractstack)
 
 Install
 -------
 
-```bash
+```shell
 $ gem install abstractstack
 ```
 
 Link
 ----
 
-* [Home](http://kachick.github.com/abstractstack/)
 * [code](https://github.com/kachick/abstractstack)
-* [API](http://kachick.github.com/abstractstack/yard/frames.html)
+* [API](http://www.rubydoc.info/github/kachick/abstractstack)
 * [issues](https://github.com/kachick/abstractstack/issues)
-* [CI](http://travis-ci.org/#!/kachick/abstractstack)
-* [gem](https://rubygems.org/gems/abstractstack)
 
 License
 --------
