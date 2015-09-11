@@ -6,9 +6,6 @@ branches:
 
 rvm:
   - 2.2
-  - 2.1
-  - 2.0
-  - 1.9.3
   - ruby-head
   - rbx-2
   - jruby-head
