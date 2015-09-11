@@ -4,29 +4,8 @@ require_relative 'helper'
 
 class TestAbstractStack < Test::Unit::TestCase
 
-  class FIFO < AbstractStack
-    include Enumerable
-    include Subscriptable
-
-    alias_method :each, :fifo_each
-    alias_method :reverse_each, :filo_each
-
-    def at(pos)
-      super pos, :bottom
-    end
-  end
-
-  class LIFO < AbstractStack
-    include Enumerable
-    include Subscriptable
-
-    alias_method :each, :lifo_each
-    alias_method :reverse_each, :fifo_each
-
-    def at(pos)
-      super pos, :top
-    end
-  end
+  FIFO = AbstractStack::FIFO
+  LIFO = AbstractStack::LIFO
 
   def test_fifo
     stack = FIFO.new
@@ -69,7 +48,7 @@ class TestAbstractStack < Test::Unit::TestCase
       stack[-3]
     end
 
-    assert_equal '#<TestAbstractStack::FIFO limit=nil [1, "String"]>', stack.inspect
+    assert_equal '#<AbstractStack::FIFO limit=nil [1, "String"]>', stack.inspect
 
     stack2 = FIFO.new
     stack2 << 1
@@ -135,7 +114,7 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal 2, stack.limit
     stack << 4 << 7
 
-    assert_equal '#<TestAbstractStack::FIFO limit=2 [4, 7]>', stack.inspect
+    assert_equal '#<AbstractStack::FIFO limit=2 [4, 7]>', stack.inspect
 
     assert_raises FIFO::OverFlow do
       stack << 9
