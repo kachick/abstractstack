@@ -122,6 +122,13 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal 0, stack.length
   end
 
+  def test_fifo_to_h
+    stack = FIFO.new
+    stack << [:key1, :value1]
+    stack << [:key2, :value2]
+    assert_equal stack.to_h, [[:key1, :value1], [:key2, :value2]].to_h
+  end
+
   def test_sizelimit
     stack = FIFO.new 2
 
@@ -184,6 +191,13 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal [14, 2], stack2.map{|v|v * 2}
 
     assert_equal 7, stack2[0]
+  end
+
+  def test_lifo_to_h
+    stack = LIFO.new
+    stack << [:key1, :value1]
+    stack << [:key2, :value2]
+    assert_equal stack.to_h, [[:key1, :value1], [:key2, :value2]].to_h
   end
 
 end
