@@ -2,7 +2,6 @@
 
 class AbstractStack
 
-  extend Forwardable
   include Enumerable
 
   attr_reader :limit
