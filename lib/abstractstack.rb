@@ -5,8 +5,6 @@
 require 'forwardable'
 require_relative 'abstractstack/version'
 require_relative 'abstractstack/exceptions'
-require_relative 'abstractstack/subscriptable'
-require_relative 'abstractstack/instance_methods'
 
 # @example
 #   class SimpleStack < AbstractStack; end
@@ -20,7 +18,9 @@ require_relative 'abstractstack/instance_methods'
 #     alias_method :last, :bottom
 #   end
 class AbstractStack
+  extend Forwardable
 end
 
+require_relative 'abstractstack/instance_methods'
 require_relative 'abstractstack/fifo'
 require_relative 'abstractstack/lifo'
