@@ -3,6 +3,7 @@
 class AbstractStack
 
   extend Forwardable
+  include Enumerable
 
   attr_reader :limit
 
@@ -88,6 +89,18 @@ class AbstractStack
   # @return [Integer]
   def hash
     [@limit, @list].hash
+  end
+
+  # @param pos [Integer, #to_int]
+  def at(pos)
+    raise InvalidStackOperation if empty?
+
+    @list.fetch _index_for(pos.to_int)
+  end
+
+  # @param pos [Integer, #to_int]
+  def [](pos)
+    at pos
   end
 
   protected

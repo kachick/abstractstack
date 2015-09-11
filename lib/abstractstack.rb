@@ -5,7 +5,6 @@
 require 'forwardable'
 require_relative 'abstractstack/version'
 require_relative 'abstractstack/exceptions'
-require_relative 'abstractstack/subscriptable'
 require_relative 'abstractstack/instance_methods'
 
 # @example
