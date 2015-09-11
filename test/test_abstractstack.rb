@@ -3,31 +3,31 @@
 require_relative 'helper'
 
 class TestAbstractStack < Test::Unit::TestCase
-  
+
   class FIFO < AbstractStack
     include Enumerable
     include Subscriptable
-    
+
     alias_method :each, :fifo_each
     alias_method :reverse_each, :filo_each
-  
+
     def at(pos)
       super pos, :bottom
     end
   end
-  
+
   class LIFO < AbstractStack
     include Enumerable
     include Subscriptable
-    
+
     alias_method :each, :lifo_each
     alias_method :reverse_each, :fifo_each
-  
+
     def at(pos)
       super pos, :top
     end
   end
-  
+
   def test_fifo
     stack = FIFO.new
 
@@ -55,22 +55,22 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_equal [1, 'String'], stack.to_a
     assert_equal 1, stack.bottom
     assert_equal 'String', stack.top
-    
+
     assert_equal 1, stack[0]
     assert_equal 1, stack[-2]
     assert_equal 'String', stack[1]
     assert_equal 'String', stack[-1]
-    
+
     assert_raises IndexError do
       stack[2]
     end
-    
+
     assert_raises IndexError do
       stack[-3]
     end
-    
+
     assert_equal '#<TestAbstractStack::FIFO limit=nil [1, "String"]>', stack.inspect
-    
+
     stack2 = FIFO.new
     stack2 << 1
     assert_same false, stack == stack2
@@ -85,13 +85,13 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_same true, stack == stack3
     assert_same false, stack.eql?(stack3)
     assert_same false, {stack => true}.has_key?(stack3)
-    
+
     stack4 = stack3.dup
     assert_equal 3, stack4.limit
     assert_same true, stack3 == stack4
     stack4 << :sth
     assert_same false, stack3 == stack4
-    
+
     enum = stack.each
     assert_kind_of Enumerable, enum
     assert_equal 1, enum.next
@@ -99,7 +99,8 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_raises StopIteration do
       enum.next
     end
-    
+    assert_equal enum.size, enum.to_a.each.size
+
     assert_same stack, stack.each{|v|v}
 
     enum = stack.lifo_each
@@ -123,12 +124,12 @@ class TestAbstractStack < Test::Unit::TestCase
 
   def test_sizelimit
     stack = FIFO.new 2
-    
+
     assert_equal 2, stack.limit
     stack << 4 << 7
-    
+
     assert_equal '#<TestAbstractStack::FIFO limit=2 [4, 7]>', stack.inspect
-    
+
     assert_raises FIFO::OverFlow do
       stack << 9
     end
@@ -140,7 +141,7 @@ class TestAbstractStack < Test::Unit::TestCase
     stack = FIFO.new 2
     stack << 1
     stack.freeze
-    
+
     assert_raises RuntimeError do
       stack.pop
     end
@@ -157,18 +158,18 @@ class TestAbstractStack < Test::Unit::TestCase
 
     assert_equal 'String', stack[0]
     assert_equal 'String', stack[-2]
-    
+
     assert_equal 1, stack[1]
     assert_equal 1, stack[-1]
 
     assert_raises IndexError do
       stack[2]
     end
-    
+
     assert_raises IndexError do
       stack[-3]
     end
-    
+
     enum = stack.each
     assert_kind_of Enumerable, enum
     assert_equal 'String', enum.next
@@ -176,11 +177,12 @@ class TestAbstractStack < Test::Unit::TestCase
     assert_raises StopIteration do
       enum.next
     end
-    
+    assert_equal enum.size, enum.to_a.each.size
+
     stack2 = LIFO.new
     stack2 << 1 << 7
     assert_equal [14, 2], stack2.map{|v|v * 2}
-    
+
     assert_equal 7, stack2[0]
   end
 

@@ -3,9 +3,9 @@
 class AbstractStack
 
   extend Forwardable
-  
+
   attr_reader :limit
- 
+
   # @param limit [Integer]
   def initialize(limit=nil)
     @list = []
@@ -21,7 +21,7 @@ class AbstractStack
   # @raise [OverFlow] if over the limit size of self
   def push(value)
     raise OverFlow if limit && (limit <= length)
-    
+
     @list.push value
     self
   end
@@ -31,7 +31,7 @@ class AbstractStack
   # @raise [UnderFlow] if self is empty when you call
   def pop
     raise UnderFlow if empty?
-      
+
     @list.pop
   end
 
@@ -39,19 +39,19 @@ class AbstractStack
   # @yieldreturn [self]
   # @return [Enumerator]
   def fifo_each
-    return to_enum(__callee__) unless block_given?
+    return to_enum(__callee__) { size } unless block_given?
 
     @list.each{|v|yield v}
     self
   end
-  
+
   alias_method :lilo_each, :fifo_each
 
   # @yield [value]
   # @yieldreturn [self]
   # @return [Enumerator]
   def filo_each
-    return to_enum(__callee__) unless block_given?
+    return to_enum(__callee__) { size } unless block_given?
 
     @list.reverse_each{|v|yield v}
     self
@@ -69,19 +69,19 @@ class AbstractStack
     @list.freeze
     super
   end
-  
+
   # @return [String]
   def inspect
     "#<#{self.class} limit=#{@limit.inspect} #{@list.inspect}>"
   end
-  
+
   # @return [Boolean]
   def ==(other)
     (self.class == other.class) && (@list == other._list)
   end
-  
+
   def eql?(other)
-    (self.class == other.class) && 
+    (self.class == other.class) &&
       [limit, _list].eql?([other.limit, other._list])
   end
 
@@ -89,9 +89,9 @@ class AbstractStack
   def hash
     [@limit, @list].hash
   end
-  
+
   protected
-  
+
   def _list
     @list
   end
@@ -101,7 +101,7 @@ class AbstractStack
   def initialize_copy(original)
     @list = @list.dup
   end
-  
+
   def _limit_for(limit)
     case limit
     when nil, 0, false
