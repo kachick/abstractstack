@@ -3,7 +3,6 @@ abstractstack
 
 [![Build Status](https://secure.travis-ci.org/kachick/abstractstack.png)](http://travis-ci.org/kachick/abstractstack)
 [![Gem Version](https://badge.fury.io/rb/abstractstack.png)](http://badge.fury.io/rb/abstractstack)
-[![Dependency Status](https://gemnasium.com/kachick/abstractstack.svg)](https://gemnasium.com/kachick/abstractstack)
 
 Description
 -----------
