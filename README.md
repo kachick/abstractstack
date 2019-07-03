@@ -76,7 +76,7 @@ stack[-1]                #=> 1
 Requirements
 -------------
 
-* Ruby - [2.2 or later](http://travis-ci.org/#!/kachick/abstractstack)
+* Ruby - [2.5 or later](http://travis-ci.org/#!/kachick/abstractstack)
 
 Install
 -------
