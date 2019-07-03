@@ -12,10 +12,10 @@ Gem::Specification.new do |gem|
   gem.name          = 'abstractstack'
   gem.version       = AbstractStack::VERSION.dup # dup for https://github.com/rubygems/rubygems/commit/48f1d869510dcd325d6566df7d0147a086905380#-P0
 
-  gem.add_development_dependency 'yard', '>= 0.8.7.6', '< 0.9'
+  gem.add_development_dependency 'test-unit', '>= 3.3.3', '< 4'
+  gem.add_development_dependency 'yard', '>= 0.9.20', '< 2'
   gem.add_development_dependency 'rake', '>= 10', '< 20'
-  gem.add_development_dependency 'bundler', '>= 1.10', '< 2'
-  gem.add_development_dependency 'test-unit', '>= 3.1.1', '< 4'
+  gem.add_development_dependency 'bundler', '>= 2', '< 3'
 
   # common
 
