@@ -128,11 +128,11 @@ class TestAbstractStack < Test::Unit::TestCase
     stack << 1
     stack.freeze
 
-    assert_raises RuntimeError do
+    assert_raises FrozenError do
       stack.pop
     end
 
-    assert_raises RuntimeError do
+    assert_raises FrozenError do
       stack << 1
     end
   end
