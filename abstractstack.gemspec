@@ -7,7 +7,6 @@ Gem::Specification.new do |gem|
 
   gem.summary       = %q{Easy to get stack APIs}
   gem.description   = gem.summary.dup
-  gem.homepage      = 'http://kachick.github.com/abstractstack/'
 
   gem.name          = 'abstractstack'
   gem.version       = AbstractStack::VERSION.dup # dup for https://github.com/rubygems/rubygems/commit/48f1d869510dcd325d6566df7d0147a086905380#-P0
